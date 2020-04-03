@@ -1,0 +1,24 @@
+.detailTitle {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.detailContent {
+    padding: 1.3rem;
+    font-size: 1rem;
+}
+
+.center{
+    text-align: center;
+}
+
+.navTitle {
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding: .5rem;
+}
+
+.articleMenu {
+    font-size: 12px;
+}

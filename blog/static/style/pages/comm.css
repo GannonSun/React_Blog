@@ -1,0 +1,72 @@
+body {
+    background-color: #f6f6f6;
+}
+
+.contentDiv {
+    padding-top: 3rem;
+}
+
+.mainBody {
+    padding: .5rem 0;
+}
+
+.leftMainBody {
+    /* background-color: #FFF; */
+    padding: 0 .3rem;
+    border-radius: .3rem;
+    border-bottom: 1px solid #eee;
+}
+
+.rightMainBody {
+    background-color: #FFF;
+    margin: 0 .5rem;
+    padding: .3rem;
+    border-radius: .3rem;
+    border-bottom: 1px solid #eee;
+}
+
+.leftBox {
+    background-color: #FFF;
+    padding: .3rem;
+    margin-bottom: .5rem;
+    border-radius: .3rem;
+    border: 1px solid #eee;
+}
+
+.footerDiv {
+    width: 100%;
+    text-align: center;
+}
+
+.ant-list-header {
+    padding-left: .5rem;
+    font-size: 18px;
+}
+
+/* 列表样式 */
+.list-title{
+    font-size: 1.3rem;
+    color: #1e90ff;
+    padding: 0 0.5rem;
+}
+
+.list-context{
+    color: #777;
+    padding: .5rem;
+}
+
+.list-icon{
+    padding: .5rem 0;
+    color: #AAA;
+}
+
+.list-icon span{
+    display: inline-block;
+    padding: 0 10px;
+}
+
+/* 面包屑样式 */
+.breadDiv {
+    padding: .5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
