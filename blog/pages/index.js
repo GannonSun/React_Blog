@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import servicePath from '../config/apiConfig'
 import { Row, Col, List } from 'antd';
 import { ClockCircleOutlined, TagOutlined, FireOutlined } from '@ant-design/icons';
 
@@ -51,7 +52,7 @@ const Home = (list) => {
 
 Home.getInitialProps = async () => {
 	const promise = new Promise((resolve) => {
-		axios('http://127.0.0.1:7001/api/getArticleList').then(
+		axios(servicePath.getArticleList).then(
 			(res) => {
 				resolve(res.data)
 			}

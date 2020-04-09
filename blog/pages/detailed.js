@@ -3,6 +3,7 @@ import axios from 'axios';
 import marked from 'marked';
 import hljs from "highlight.js";
 import Tocify from '../components/tocify.tsx'
+import servicePath from '../config/apiConfig'
 import { Row, Col, Affix, Breadcrumb } from 'antd';
 import { ClockCircleOutlined, TagOutlined, FireOutlined } from '@ant-design/icons';
 
@@ -93,7 +94,7 @@ const Detailed = (props) => {
 Detailed.getInitialProps = async (context) => {
 	let id = context.query.id
 	const promise = new Promise((resolve) => {
-		axios('http://127.0.0.1:7001/api/getArticleById/' + id).then(
+		axios(servicePath.getArticleById + id).then(
 			(res) => {
 				resolve(res.data.data[0])
 			}
