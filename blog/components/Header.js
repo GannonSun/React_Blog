@@ -22,7 +22,7 @@ const Header = () => (
                     </Menu.Item>
                     <Menu.Item key="life">
                         <CodeOutlined />
-                        <a href="/detail">前端</a>
+                        <a href="/detailed">前端</a>
                     </Menu.Item>
                 </Menu>
             </Col>

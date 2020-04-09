@@ -15,8 +15,8 @@ class HomeController extends Controller {
             'article.id AS id,' +
             'article.title AS title,' +
             'article.introduce AS introduce,' +
-            'article.publishTime AS publishTime,' +
-            'article.view_count AS view_count,' +
+            "FROM_UNIXTIME(article.publishTime,'%Y-%m-%d %H:%i:%s' ) as publishTime," +
+            'article.view_count AS viewCount,' +
             'article_type.typeName AS typeName ' +
             'FROM ' +
             'article ' +
@@ -27,6 +27,27 @@ class HomeController extends Controller {
         this.ctx.body = {
             data: results
         }
+    }
+
+    async getArticleById() {
+        //先配置路由的动态传值，然后再接收值
+        let id = this.ctx.params.id
+
+        let sql = 'SELECT article.id as id,' +
+            'article.title as title,' +
+            'article.introduce as introduce,' +
+            'article.article_content as articleContent,' +
+            "FROM_UNIXTIME(article.publishTime,'%Y-%m-%d %H:%i:%s' ) as publishTime," +
+            'article.view_count as viewCount ,' +
+            'article_type.typeName as typeName ,' +
+            'article_type.id as typeId ' +
+            'FROM article LEFT JOIN article_type ON article.type_id = article_type.Id ' +
+            'WHERE article.id=' + id
+            
+        const result = await this.app.mysql.query(sql)
+
+        this.ctx.body = { data: result }
+
     }
 }
 
