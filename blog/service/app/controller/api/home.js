@@ -10,6 +10,15 @@ class HomeController extends Controller {
         this.ctx.body = result
     }
 
+    // 获取类别名称和编号
+    async getTypeInfo() {
+        const result = await this.app.mysql.select('article_type')
+        this.ctx.body = {
+            data: result
+        }
+    }
+
+    // 获取文章列别
     async getArticleList() {
         let sql = 'SELECT ' +
             'article.id AS id,' +
@@ -43,7 +52,7 @@ class HomeController extends Controller {
             'article_type.id as typeId ' +
             'FROM article LEFT JOIN article_type ON article.type_id = article_type.Id ' +
             'WHERE article.id=' + id
-            
+
         const result = await this.app.mysql.query(sql)
 
         this.ctx.body = { data: result }
