@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Link from 'next/link'
+import servicePath from '../config/apiConfig'
 import { Row, Col, List, Breadcrumb } from 'antd'
 import { ClockCircleOutlined, TagOutlined, FireOutlined } from '@ant-design/icons'
 
@@ -8,11 +11,8 @@ import MainLayout from '../components/MainLayout';
 
 import '../static/style/pages/list.css'
 
-const articleList = () => {
-
-    const [mylist, setMylist] = useState(
-        []
-    )
+const articleList = (list) => {
+    const [mylist, setMylist] = useState(list.data)
 
     return (
         <MainLayout title="List" >
@@ -34,11 +34,15 @@ const articleList = () => {
                             dataSource={mylist}
                             renderItem={item => (
                                 <List.Item>
-                                    <div className="list-title">{item.title}</div>
+                                    <div className="list-title">
+                                        <Link href={{ pathname: '/detailed', query: { id: item.id } }}>
+                                            <a>{item.title}</a>
+                                        </Link>
+                                    </div>
                                     <div className="list-icon">
-                                        <span><ClockCircleOutlined />2019-06-28</span>
-                                        <span><TagOutlined />视频教程</span>
-                                        <span><FireOutlined />5498人</span>
+                                        <span><ClockCircleOutlined />{item.publishTime}</span>
+                                        <span><TagOutlined />{item.typeName}</span>
+                                        <span><FireOutlined />{item.viewCount}人</span>
                                     </div>
                                     <div className="list-context">{item.context}</div>
                                 </List.Item>
@@ -49,6 +53,16 @@ const articleList = () => {
             </Row>
         </MainLayout>
     )
+}
+
+articleList.getInitialProps = async (context) => {
+    let id = context.query.id
+    const promise = new Promise((resolve) => {
+        axios(servicePath.getListById + id).then(
+            (res) => resolve(res.data)
+        )
+    })
+    return await promise
 }
 
 export default articleList

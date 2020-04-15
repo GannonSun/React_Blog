@@ -18,7 +18,6 @@ const Header = () => {
         const fetchData = async () => {
             const result = await axios(servicePath.getTypeInfo).then(
                 (res) => {
-                    setNavArray(res.data.data)
                     return res.data.data
                 }
             )
@@ -51,10 +50,13 @@ const Header = () => {
                         {
                             navArray.map((item) => {
                                 item.icon = iconMap[item.icon]
-                                
+
                                 return (
                                     <Menu.Item key={item.id}>
-                                        <item.icon />
+                                        {
+                                            item.icon ?
+                                                <item.icon /> : null
+                                        }
                                         {item.typeName}
                                     </Menu.Item>
                                 )
