@@ -1,8 +1,16 @@
-.adDiv{
+.adDiv {
     margin-top: .5rem;
 }
-.adDiv div{
+
+.adDiv span {
+    text-align: center;
+    padding    : 16px;
+    width     : 100%;
+    display   : block;
+}
+
+.adDiv div {
     border-radius: .3rem;
     margin-bottom: .2rem;
-    overflow: hidden;
+    overflow     : hidden;
 }

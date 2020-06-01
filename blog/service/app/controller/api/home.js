@@ -76,10 +76,19 @@ class HomeController extends Controller {
             'LEFT JOIN article_type ON article.type_id = article_type.id ' +
             'WHERE type_id=' + id
 
+        let titleSql = 'SELECT ' +
+            'article_type.typeName AS title ' +
+            'FROM ' +
+            'article_type ' +
+            'WHERE ' +
+            'article_type.id = ' + id
+
         const results = await this.app.mysql.query(sql)
+        const titleRes = await this.app.mysql.query(titleSql)
 
         this.ctx.body = {
-            data: results
+            data: results,
+            title: titleRes && titleRes[0].title
         }
     }
 

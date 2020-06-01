@@ -1,0 +1,60 @@
+@font-face {
+    font-family: MottoFont;
+    src        : url(../../static/fonts/STXINGKA.TTF);
+}
+
+html,
+body {
+    width : 100%;
+    height: 100%;
+}
+
+.loginBg {
+    display              : flex;
+    justify-content      : center;
+    align-items          : center;
+    background           : url(../../static/images/loginBg.jpg);
+    background-size      : 100% 100%;
+    background-attachment: fixed;
+    width                : 100%;
+    height               : 100%;
+}
+
+.loginContent {
+    width           : 60%;
+    height          : 70%;
+    background-color: rgba(240, 255, 255, 0.25);
+    box-shadow      : 0px 0px 10px 3px;
+}
+
+.loginMotto {
+    float  : left;
+    padding: 24px;
+    width  : 60%;
+}
+
+.loginMotto p {
+    color        : #56697a;
+    font-family  : MottoFont;
+    margin-bottom: 0;
+}
+
+.loginMotto p:first-child {
+    font-size: 36px;
+}
+
+.loginMotto p:nth-child(2) {
+    font-size: 24px;
+}
+
+.loginForm {
+    width          : 40%;
+    height         : 100%;
+    padding        : 24px;
+    background     : #fff;
+    float          : right;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+}

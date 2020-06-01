@@ -9,7 +9,6 @@ import { ClockCircleOutlined, TagOutlined, FireOutlined } from '@ant-design/icon
 
 import Author from '../components/Author';
 import Advert from '../components/Advert';
-import MainLayout from '../components/MainLayout';
 
 import '../static/style/pages/detailed.css';
 import 'highlight.js/styles/monokai-sublime.css';
@@ -48,46 +47,44 @@ const Detailed = (props) => {
 	let html = marked(articleContent)
 
 	return (
-		<MainLayout title={title}>
-			<Row className="mainBody" type="flex" justify="center">
-				<Col className="leftMainBody" xs={0} sm={0} md={7} lg={5} xl={4}>
-					<Author />
-					<Advert />
-					<Affix offsetTop={60}>
-						<div className="detailedNav leftBox">
-							<div className="navTitle">文章目录</div>
-							<div className="navContent">
-								{tocify && tocify.render()}
-							</div>
-						</div>
-					</Affix>
-				</Col>
-				<Col className="rightMainBody" xs={24} sm={24} md={16} lg={18} xl={14}>
-					<div>
-						<div className="breadDiv">
-							<Breadcrumb>
-								<Breadcrumb.Item><a href="/">首页</a></Breadcrumb.Item>
-								<Breadcrumb.Item>{typeName}</Breadcrumb.Item>
-								<Breadcrumb.Item>{title}</Breadcrumb.Item>
-							</Breadcrumb>
-						</div>
-						<div>
-							<div className="detailedTitle">
-								{title}
-							</div>
-							<div className="list-icon center">
-								<span><ClockCircleOutlined />{publishTime}</span>
-								<span><TagOutlined />{typeName}</span>
-								<span><FireOutlined />{viewCount}人</span>
-							</div>
-							<div className="detailedContent" dangerouslySetInnerHTML={{ __html: html }}>
-
-							</div>
+		<Row className="mainBody" type="flex" justify="center">
+			<Col className="leftMainBody" xs={0} sm={0} md={7} lg={5} xl={4}>
+				<Author />
+				<Advert />
+				<Affix offsetTop={60}>
+					<div className="detailedNav leftBox">
+						<div className="navTitle">文章目录</div>
+						<div className="navContent">
+							{tocify && tocify.render()}
 						</div>
 					</div>
-				</Col>
-			</Row>
-		</MainLayout>
+				</Affix>
+			</Col>
+			<Col className="rightMainBody" xs={24} sm={24} md={16} lg={18} xl={14}>
+				<div>
+					<div className="breadDiv">
+						<Breadcrumb>
+							<Breadcrumb.Item><a href="/">首页</a></Breadcrumb.Item>
+							<Breadcrumb.Item>{typeName}</Breadcrumb.Item>
+							<Breadcrumb.Item>{title}</Breadcrumb.Item>
+						</Breadcrumb>
+					</div>
+					<div>
+						<div className="detailedTitle">
+							{title}
+						</div>
+						<div className="list-icon center">
+							<span><ClockCircleOutlined />{publishTime}</span>
+							<span><TagOutlined />{typeName}</span>
+							<span><FireOutlined />{viewCount}人</span>
+						</div>
+						<div className="detailedContent" dangerouslySetInnerHTML={{ __html: html }}>
+
+						</div>
+					</div>
+				</div>
+			</Col>
+		</Row>
 	)
 }
 

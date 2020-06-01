@@ -14,6 +14,7 @@ const iconMap = {
 
 const Header = () => {
     const [navArray, setNavArray] = useState([])
+    const [current, sertCurrent] = useState('0')
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(servicePath.getTypeInfo).then(
@@ -27,7 +28,9 @@ const Header = () => {
     }, [])
 
     const handleClick = (e) => {
-        if (e.key == 0) {
+        sertCurrent(e.key);
+        
+        if (e.key == '0') {
             Router.push('/index')
         } else {
             Router.push('/list?id=' + e.key)
@@ -42,20 +45,20 @@ const Header = () => {
                     <span className="headerText">俺的博客</span>
                 </Col>
                 <Col className="menuDiv" xs={0} sm={0} md={14} lg={8} xl={12}>
-                    <Menu mode="horizontal" onClick={handleClick}>
+                    <Menu mode="horizontal" selectedKeys={[current]} onClick={handleClick}>
                         <Menu.Item key="0">
                             <HomeOutlined />
                             首页
                         </Menu.Item>
                         {
                             navArray.map((item) => {
-                                item.icon = iconMap[item.icon]
+                                item.iconEl = iconMap[item.icon]
 
                                 return (
                                     <Menu.Item key={item.id}>
                                         {
                                             item.icon ?
-                                                <item.icon /> : null
+                                                <item.iconEl /> : null
                                         }
                                         {item.typeName}
                                     </Menu.Item>
